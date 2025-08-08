@@ -64,24 +64,41 @@ const animateOnScroll = () => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// Form Submission
+// Form Submission with Email Functionality
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
+    // FormSubmit.co endpoint with your email
+    const formAction = 'https://formsubmit.co/el/layago'; 
     
-    // Here you would typically send the form data to a server
-    // For this example, we'll just log it and show an alert
-    console.log({ name, email, subject, message });
+    // Create form data object
+    const formData = new FormData(contactForm);
     
-    alert('Thank you for your message! I will get back to you soon.');
-    contactForm.reset();
+    // Add additional form parameters
+    formData.append('_subject', 'New Message From Portfolio');
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    formData.append('_next', 'https://yourportfolio.com/thank-you.html'); // Replace with your actual URL
+    
+    // Send the form data
+    fetch(formAction, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Message sent successfully! I will get back to you soon.');
+            contactForm.reset();
+        } else {
+            throw new Error('Failed to send message');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was a problem sending your message. Please try again later or contact me directly at kishore469312@gmail.com');
+    });
 });
 
 // Initialize skill bars animation
@@ -91,4 +108,5 @@ document.querySelectorAll('.skill-progress').forEach(bar => {
     setTimeout(() => {
         bar.style.width = width;
     }, 500);
+
 });
