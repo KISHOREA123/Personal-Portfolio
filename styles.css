@@ -556,6 +556,55 @@ footer {
     transform: scale(1.1);
 }
 
+/* Tech Stack Styles */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tech-tag {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode adjustment for tech tags */
+.dark-mode .tech-tag {
+    background-color: var(--primary-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack {
+        gap: 6px;
+    }
+    
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -650,3 +699,4 @@ footer {
     }
 
 }
+
