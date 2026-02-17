@@ -365,6 +365,9 @@ nav {
     margin-bottom: 15px;
 }
 
+/* Project cover images */
+/* project-cover removed — covers are no longer used */
+
 .project-tech {
     display: flex;
     flex-wrap: wrap;
