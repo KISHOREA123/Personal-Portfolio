@@ -531,8 +531,13 @@ nav {
 footer {
     text-align: center;
     padding: 30px 0;
-    background-color: var(--secondary-color);
+    background-color: var(--footer-bg, var(--secondary-color));
     color: white;
+}
+
+.dark-mode footer {
+    background-color: #1a252f; /* A darker shade for contrast in dark mode */
+    color: var(--text-color);
 }
 
 /* Dark Mode Toggle */
